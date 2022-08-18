@@ -1,2 +1,1 @@
-# metaswap-contracts
-Metaswap Smart contracts
+# MetaDEXA
