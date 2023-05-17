@@ -18,20 +18,8 @@ contract FlashWallet is IFlashWallet {
         owner = msg.sender;
     }
 
-    modifier onlyOwner() virtual {
-        require(msg.sender == owner, "FW_NA");
-        _;
-    }
-
-    function executeDelegateCall(
-        address payable target,
-        bytes calldata callData
-    )
-    external
-    payable
-    override
-    onlyOwner
-    returns (bytes memory resultData)
+    function executeDelegateCall(address payable target, bytes calldata callData) 
+     external payable  override onlyOwner returns (bytes memory resultData)
     {
         bool success;
         (success, resultData) = target.delegatecall(callData);
@@ -42,4 +30,9 @@ contract FlashWallet is IFlashWallet {
 
     /// @dev Receives ether from swaps
     receive() external override payable {}
+
+    modifier onlyOwner() virtual {
+     require(msg.sender == owner, "FW_NA");
+     _;
+    }
 }

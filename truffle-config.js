@@ -89,8 +89,24 @@ module.exports = {
             timeoutBlocks: 1000,
             websockets: true,
             gasPrice: gasPrice,
-            gas: gasLimit
+            gas: gasLimit,
         },
+        "arbitrum":{      
+            provider: () => new HDWalletProvider(process.env.MNEMONIC,'https://arb-mainnet.g.alchemy.com/v2/zwprDt7ULoa8exA0EPjjoB2g-oK6nyBk'),
+            network_id: 42161,
+            skipDryRun: false,
+            timeoutBlocks: 10000000,
+            gasLimit: 150000000,
+            gasPrice: 100000000 , 
+        },
+        "optimism":{      
+            provider: () => new HDWalletProvider(process.env.MNEMONIC,'https://opt-mainnet.g.alchemy.com/v2/F5H_OYld-24aoxECiwFj70cjhr2TaHgm'),
+            network_id: 10,
+            skipDryRun: false,
+            timeoutBlocks: 10000000,
+            // gasLimit: 15000000,
+            // gasPrice: 101591 , 
+        },        
         // Another network with more advanced options...
         // advanced: {
         // port: 8777,             // Custom port
@@ -154,6 +170,7 @@ module.exports = {
     ],
     api_keys: {
         etherscan: process.env.ETHERSCAN_API_KEY,
-        polygonscan: process.env.ETHERSCAN_API_KEY
+        polygonscan: process.env.ETHERSCAN_API_KEY,
+        arbiscan: process.env.ARBISCAN_API_KEY,
     }
 }
